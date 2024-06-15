@@ -6,7 +6,7 @@ module bank(
     input vsi_inputChipSelect,
     input vsi_outputChipSelect,
     input [6:0] vsi_outputAddr,
-    output [127:0] vsi_outputData
+    output wire [127:0] vsi_outputData
 );
 
 //attention! B is for WRITE, A is for READ
@@ -18,11 +18,11 @@ MBH_ZSWL_IN22FDX_R2PV_WFVG_W00128B128M02C128 sram
     .cenB(~vsi_inputChipSelect),
     .deepsleep(1'b0),
     .powergate(1'b0),
-    .aA(vsi_inputAddr),//Addr
-    .aB(vsi_outputAddr),//Addr
+    .aA(vsi_outputAddr),//Addr
+    .aB(vsi_inputAddr),//Addr
     .d(vsi_inputData),
-    .bw(128'b0),
-    .q(vsi_outputData),
+    .bw({128{1'b1}}),
+    .q(vsi_outputData)
 );
 
 endmodule
