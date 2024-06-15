@@ -2,7 +2,9 @@ module bank(
     input vsi_clk,
     input vsi_reset_n,
     input vsi_inputData,
+    input vsi_inputAddr,
     input vsi_chipSelect,
+    input vsi_outputAddr,
     output vsi_outputData
 );
 
@@ -15,9 +17,9 @@ MBH_ZSWL_IN22FDX_R2PV_WFVG_W00128B128M02C128 sram
     .CEN_B(1'b1),
     .DEEPSLEEP(1'b0),
     .POWERGATE(1'b0),
-    .aA(7'b0000000),
-    .aB(7'b0000000),
-    .D(vsi_rdata),
+    .aA(vsi_inputAddr),//Addr
+    .aB(vsi_outputAddr),//Addr
+    .D(vsi_inputData),
     .BW(128'b0),
     .T_LOGIC(1'b0),
     .MA_SAWL(1'b0),
