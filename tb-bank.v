@@ -5,12 +5,12 @@ module bank_tb;
     // Testbench signals
     reg vsi_clk;
     reg vsi_reset_n;
-    reg vsi_inputData;
-    reg vsi_inputAddr;
+    reg [127:0] vsi_inputData;
+    reg [6:0] vsi_inputAddr;
     reg vsi_inputChipSelect;
     reg vsi_outputChipSelect;
-    reg vsi_outputAddr;
-    wire vsi_outputData;
+    reg [6:0] vsi_outputAddr;
+    wire[127:0] vsi_outputData;
 
     // Instantiate the bank module
     bank uut (
