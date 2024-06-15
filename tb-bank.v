@@ -33,6 +33,33 @@ module bank_tb;
     // Testbench stimulus
     initial begin
     //write test
-    vsi_inputAddr = 
+    vsi_inputAddr = 7'b0000001;
+    vsi_inputData = 128'habcd123;
+    vsi_inputChipSelect = 1'b1;
+    vsi_outputChipSelect = 1'b0;
+    vsi_outputAddr = 7'b0000000;
+    vsi_reset_n = 1'b1;
+    #10;
+    //another write test
+    vsi_inputAddr = 7'b0000010;
+    vsi_inputData = 128'h1234abcd;
+    vsi_inputChipSelect = 1'b1;
+    vsi_outputChipSelect = 1'b0;
+    vsi_outputAddr = 7'b0000000;
+    vsi_reset_n = 1'b1;
+    #10;
+    //read while write test
+    vsi_inputAddr = 7'b0000011;
+    vsi_inputData = 128'h123a1bcd;
+    vsi_outputAddr = 7'b0000001;
+    vsi_inputChipSelect = 1'b1;
+    vsi_outputChipSelect = 1'b1;
+    #10;
+    //read test
+    vsi_inputAddr = 7'b0000100;
+    vsi_inputData = 128'h123a1bca;
+    vsi_outputAddr = 7'b0000010;
+    vsi_inputChipSelect = 1'b0;
+    vsi_outputChipSelect = 1'b1;
     end
 endmodule
